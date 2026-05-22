@@ -10,6 +10,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
+.avatarFallback{
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:"Montserrat",sans-serif;
+    font-size:34px;
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #e6007e,
+        #8b5cf6
+    );
+
+    border:4px solid #f0f0f0;
+
+    user-select:none;
+}
 .oculto {
     display: none;
 }
@@ -249,30 +276,30 @@ small{
 
     <div class="panel">
 
-        <h2>Generador</h2>
+        <h2>Generador Firmas Kims</h2>
 
         <div class="input-group">
-            <label>Nombre</label>
+            <label>Nombre (mayuscula automática)</label>
             <input type="text" id="nombre" value="JUAN MANUEL ROJAS">
         </div>
 
         <div class="input-group">
-            <label>Puesto</label>
+            <label>Puesto (capitalizado automático)</label>
             <input type="text" id="puesto" value="Planificación & Recursos Humanos">
         </div>
 
         <div class="input-group">
-            <label>Celular o telefono Kims</label>
+            <label>Celular (dejar vacio si no se usa)</label>
             <input type="text" id="celular" value="">
         </div>
 
         <div class="input-group">
-            <label>Email (sin @kims.com.ar)</label>
+            <label>Email (sin el @kims.com.ar)</label>
             <input type="text" id="email" value="planificacion">
         </div>
 
         <div class="input-group">
-            <label>Interno</label>
+            <label>Interno (solo el numero de interno)</label>
             <input type="text" id="interno" value="403">
         </div>
 
@@ -330,8 +357,15 @@ small{
                 <img src="qr.png" crossorigin="anonymous">
             </div>
 
-            <div class="foto">
-                <img id="previewFoto" src="default-user.jpg" crossorigin="anonymous">
+            <div class="foto" id="fotoContainer">
+
+                <img id="previewFoto"
+                style="display:none;">
+
+                <div class="avatarFallback"
+                id="avatarFallback">
+                </div>
+
             </div>
 
         </div>
@@ -378,33 +412,42 @@ function generarFirma() {
     document.getElementById("previewInterno").innerText = "54-11 4838-1000 Int: " +document.getElementById("interno").value;
     document.getElementById("previewDireccion").innerText = document.getElementById("direccion").value;
 
-    const inputFoto = document.getElementById("fotoInput");
+    const inputFoto =
+        document.getElementById("fotoInput");
 
-    const bloqueFoto =
-    document.querySelector(".foto");
+    const img =
+        document.getElementById("previewFoto");
 
-if(inputFoto.files && inputFoto.files[0]){
+    const avatar =
+        document.getElementById("avatarFallback");
 
-    bloqueFoto.style.display = "flex";
+    const nombre =
+        document.getElementById("nombre").value;
 
-    const reader = new FileReader();
+    if(inputFoto.files && inputFoto.files[0]){
 
-    reader.onload = function(e){
+        const reader = new FileReader();
 
-        const img =
-            document.getElementById("previewFoto");
+        reader.onload = function(e){
 
-        img.crossOrigin = "anonymous";
+            img.style.display = "block";
 
-        img.src = e.target.result;
-    };
+            avatar.style.display = "none";
 
-    reader.readAsDataURL(inputFoto.files[0]);
+            img.src = e.target.result;
+        };
 
-}else{
+        reader.readAsDataURL(inputFoto.files[0]);
 
-    bloqueFoto.style.display = "none";
-}
+    }else{
+
+        img.style.display = "none";
+
+        avatar.style.display = "flex";
+
+        avatar.innerText =
+            generarIniciales(nombre);
+    }
 }
 
 function descargarImagen() {
@@ -426,6 +469,21 @@ function descargarImagen() {
 
 generarFirma();
 
+function generarIniciales(nombre){
+
+    const partes =
+        nombre.trim().split(" ");
+
+    if(partes.length === 1){
+
+        return partes[0][0].toUpperCase();
+    }
+
+    return (
+        partes[0][0] +
+        partes[partes.length -1][0]
+    ).toUpperCase();
+}
 </script>
 </body>
 </html>
