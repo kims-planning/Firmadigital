@@ -402,7 +402,7 @@ function generarFirma() {
             datoCelular.style.display = "flex";
 
             document.getElementById("previewCelular").innerText =
-                celular;
+    formatearTelefono(celular);
 
         }else{
 
@@ -484,6 +484,19 @@ function generarIniciales(nombre){
         partes[partes.length -1][0]
     ).toUpperCase();
 }
+
+function formatearTelefono(numero){
+
+    numero =
+        numero.replace(/\D/g,"");
+
+    if(numero.length === 10){
+
+        return `+54 ${numero.slice(0,2)} ${numero.slice(2,6)}-${numero.slice(6)}`;
+    }
+
+    return numero;
+}   
 </script>
 </body>
 </html>
