@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
+.oculto {
+    display: none;
+}
 
 body{
     margin:0;
@@ -132,14 +135,14 @@ small{
 
 .nombre{
     font-family:"Oswald",sans-serif;
-    font-size:18px;
+    font-size:20 px;
     font-weight:bold;
     color:#333;
     letter-spacing:1px;
 }
 
 .puesto{
-    font-size:12px;
+    font-size:16px;
     font-weight:bold;
     color:#e6007e;
     margin-top:3px;
@@ -167,7 +170,7 @@ small{
     grid-row:2;
     align-self:center;
     padding:0 16px 14px 16px;
-    border-right:1px solid #ececec;
+
 }
 
 .datos{
@@ -206,7 +209,7 @@ small{
     display:flex;
     justify-content:center;
     align-items:center;
-    border-right:1px solid #ececec;
+
     padding:14px 8px;
 }
 
@@ -259,21 +262,21 @@ small{
         </div>
 
         <div class="input-group">
-            <label>Celular</label>
+            <label>Celular o telefono Kims</label>
             <input type="text" id="celular" value="54-11 3131-8202">
         </div>
 
         <div class="input-group">
             <label>Email</label>
-            <input type="text" id="email" value="planificacion@kims.com.ar">
+            <input type="text" id="email" value="planificacion">
         </div>
 
         <div class="input-group">
             <label>Interno</label>
-            <input type="text" id="interno" value="54-11 4838-1000 Int:403">
+            <input type="text" id="interno" value="403">
         </div>
 
-        <div class="input-group">
+        <div class="input-group oculto">
             <label>Dirección</label>
             <input type="text" id="direccion" value="Marcos Sastre 549, B1618EXK El Talar, Provincia de Buenos Aires">
         </div>
@@ -338,13 +341,19 @@ small{
 </div>
 
 <script>
+function capitalizarTexto(texto){
+
+    return texto
+        .toLowerCase()
+        .replace(/\b\w/g, l => l.toUpperCase());
+}
 
 function generarFirma() {
-    document.getElementById("previewNombre").innerText    = document.getElementById("nombre").value;
-    document.getElementById("previewPuesto").innerText    = document.getElementById("puesto").value;
+    document.getElementById("previewNombre").innerText    = document.getElementById("nombre").value.toUpperCase();
+    document.getElementById("previewPuesto").innerText = capitalizarTexto(document.getElementById("puesto").value);
     document.getElementById("previewCelular").innerText   = document.getElementById("celular").value;
-    document.getElementById("previewEmail").innerText     = document.getElementById("email").value;
-    document.getElementById("previewInterno").innerText   = document.getElementById("interno").value;
+    document.getElementById("previewEmail").innerText     = document.getElementById("email").value.toLowerCase()+"@kims.com.ar";
+    document.getElementById("previewInterno").innerText = "54-11 4838-1000 Int: " +document.getElementById("interno").value;
     document.getElementById("previewDireccion").innerText = document.getElementById("direccion").value;
 
     const inputFoto = document.getElementById("fotoInput");
