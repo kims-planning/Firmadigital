@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 
 body{
@@ -24,8 +25,6 @@ body{
     margin:auto;
 }
 
-/* PANEL */
-
 .panel{
     background:white;
     padding:20px;
@@ -40,8 +39,7 @@ body{
 
 .input-group{
     margin-bottom:14px;
-    font-family: "Rubik", sans-serif;
-
+    font-family:"Rubik",sans-serif;
 }
 
 label{
@@ -72,61 +70,37 @@ button{
     margin-top:10px;
 }
 
-button:hover{
-    opacity:0.9;
-}
-
-/* PREVIEW */
+button:hover{ opacity:0.9; }
 
 .preview{
     background:white;
     padding:20px;
     border-radius:12px;
-    font-family: "Rubik", sans-serif;
+    font-family:"Rubik",sans-serif;
     box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* FIRMA */
-
 .firma{
-
     width:780px;
     background:white;
-
     display:grid;
-
-    grid-template-columns:
-        160px
-        1fr
-        120px
-        140px;
-
-    grid-template-rows:
-        auto
-        1fr;
-
+    grid-template-columns:160px 1fr 120px 140px;
+    grid-template-rows:auto 1fr;
     column-gap:15px;
-
     padding:10px 15px;
     box-sizing:border-box;
-
     align-items:center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-
+    box-shadow:0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
-/* HEADER */
 
 .header{
     grid-column:1 / 3;
     grid-row:1;
-
     margin-bottom:8px;
 }
 
 .nombre{
-    font-family: "Oswald", sans-serif;
+    font-family:"Oswald",sans-serif;
     font-size:18px;
     font-weight:bold;
     color:#7a7a7a;
@@ -140,12 +114,9 @@ button:hover{
     margin-top:3px;
 }
 
-/* LOGO */
-
 .logo{
     grid-column:1;
     grid-row:2;
-
     align-self:start;
 }
 
@@ -154,12 +125,9 @@ button:hover{
     display:block;
 }
 
-/* INFO */
-
 .info{
     grid-column:2;
     grid-row:2;
-
     align-self:start;
 }
 
@@ -173,36 +141,26 @@ button:hover{
     display:flex;
     align-items:center;
     gap:10px;
-
     font-size:12px;
     color:#6f6f6f;
 }
 
 .dato i{
-
     width:22px;
     height:22px;
-
     background:#9d9d9d;
     color:white;
-
     border-radius:50%;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-size:10px;
-
     flex-shrink:0;
 }
-
-/* QR */
 
 .qr{
     grid-column:3;
     grid-row:1 / 3;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -212,47 +170,23 @@ button:hover{
     width:100px;
     height:100px;
     object-fit:contain;
-
     border:5px solid #dfdfdf;
 }
-
-/* FOTO */
 
 .foto{
     grid-column:4;
     grid-row:1 / 3;
-
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
 .foto img{
-
     width:120px;
     height:120px;
-
     border-radius:50%;
     object-fit:cover;
-
     border:5px solid #dfdfdf;
-}
-
-/* HTML */
-
-textarea{
-    width:100%;
-    height:220px;
-
-    margin-top:20px;
-
-    border-radius:10px;
-    border:1px solid #ccc;
-
-    padding:10px;
-    box-sizing:border-box;
-
-    font-family:monospace;
 }
 
 small{
@@ -262,184 +196,100 @@ small{
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-    <!-- PANEL -->
     <div class="panel">
 
         <h2>Generador</h2>
 
         <div class="input-group">
             <label>Nombre</label>
-
-            <input
-                type="text"
-                id="nombre"
-                value="JUAN MANUEL ROJAS">
+            <input type="text" id="nombre" value="JUAN MANUEL ROJAS">
         </div>
 
         <div class="input-group">
             <label>Puesto</label>
-
-            <input
-                type="text"
-                id="puesto"
-                value="Planificación & Recursos Humanos">
+            <input type="text" id="puesto" value="Planificación & Recursos Humanos">
         </div>
 
         <div class="input-group">
             <label>Celular</label>
-
-            <input
-                type="text"
-                id="celular"
-                value="54-11 3131-8202">
+            <input type="text" id="celular" value="54-11 3131-8202">
         </div>
 
         <div class="input-group">
             <label>Email</label>
-
-            <input
-                type="text"
-                id="email"
-                value="planificacion@kims.com.ar">
+            <input type="text" id="email" value="planificacion@kims.com.ar">
         </div>
 
         <div class="input-group">
             <label>Interno</label>
-
-            <input
-                type="text"
-                id="interno"
-                value="54-11 4838-1000 Int:403">
+            <input type="text" id="interno" value="54-11 4838-1000 Int:403">
         </div>
 
         <div class="input-group">
             <label>Dirección</label>
-
-            <input
-                type="text"
-                id="direccion"
-                value="Marcos Sastre 549, B1618EXK El Talar, Provincia de Buenos Aires">
+            <input type="text" id="direccion" value="Marcos Sastre 549, B1618EXK El Talar, Provincia de Buenos Aires">
         </div>
 
         <div class="input-group">
-
             <label>Foto contacto</label>
-
-            <input
-                type="file"
-                id="fotoInput"
-                accept="image/*">
-
-            <small>
-                Si no carga foto usa imagen predeterminada
-            </small>
-
+            <input type="file" id="fotoInput" accept="image/*">
+            <small>Si no carga foto usa imagen predeterminada</small>
         </div>
 
-        <button onclick="generarFirma()">
-            GENERAR FIRMA
-        </button>
-        <button onclick="descargarImagen()">
-            DESCARGAR PNG
-        </button>
-
+        <button onclick="generarFirma()">GENERAR FIRMA</button>
+        <button onclick="descargarImagen()">DESCARGAR PNG</button>
 
     </div>
 
-    <!-- PREVIEW -->
     <div class="preview">
 
         <div class="firma" id="firma">
 
-            <!-- HEADER -->
             <div class="header">
-
-                <div
-                class="nombre"
-                id="previewNombre">
-                </div>
-
-                <div
-                class="puesto"
-                id="previewPuesto">
-                </div>
-
+                <div class="nombre" id="previewNombre"></div>
+                <div class="puesto" id="previewPuesto"></div>
             </div>
 
-            <!-- LOGO -->
             <div class="logo">
-
-                <img src="logo.png">
-
+                <img src="logo.png" crossorigin="anonymous">
             </div>
 
-            <!-- DATOS -->
             <div class="info">
-
                 <div class="datos">
-
                     <div class="dato">
-
                         <i class="fa-solid fa-phone"></i>
-
                         <div id="previewCelular"></div>
-
                     </div>
-
                     <div class="dato">
-
                         <i class="fa-solid fa-envelope"></i>
-
                         <div id="previewEmail"></div>
-
                     </div>
-
                     <div class="dato">
-
                         <i class="fa-solid fa-phone"></i>
-
                         <div id="previewInterno"></div>
-
                     </div>
-
                     <div class="dato">
-
                         <i class="fa-solid fa-location-dot"></i>
-
                         <div id="previewDireccion"></div>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- QR -->
             <div class="qr">
-
-                <img src="qr.png">
-
+                <img src="qr.png" crossorigin="anonymous">
             </div>
 
-            <!-- FOTO -->
             <div class="foto">
-
-                <img
-                    id="previewFoto"
-                    src="default-user.jpg">
-
+                <img id="previewFoto" src="default-user.jpg" crossorigin="anonymous">
             </div>
 
         </div>
-
-        <!-- <textarea id="codigoHTML"></textarea> COD -->
 
     </div>
 
@@ -447,72 +297,38 @@ small{
 
 <script>
 
-function generarFirma(){
+function generarFirma() {
+    document.getElementById("previewNombre").innerText    = document.getElementById("nombre").value;
+    document.getElementById("previewPuesto").innerText    = document.getElementById("puesto").value;
+    document.getElementById("previewCelular").innerText   = document.getElementById("celular").value;
+    document.getElementById("previewEmail").innerText     = document.getElementById("email").value;
+    document.getElementById("previewInterno").innerText   = document.getElementById("interno").value;
+    document.getElementById("previewDireccion").innerText = document.getElementById("direccion").value;
 
-    document.getElementById("previewNombre").innerText =
-        document.getElementById("nombre").value;
+    const inputFoto = document.getElementById("fotoInput");
 
-    document.getElementById("previewPuesto").innerText =
-        document.getElementById("puesto").value;
-
-    document.getElementById("previewCelular").innerText =
-        document.getElementById("celular").value;
-
-    document.getElementById("previewEmail").innerText =
-        document.getElementById("email").value;
-
-    document.getElementById("previewInterno").innerText =
-        document.getElementById("interno").value;
-
-    document.getElementById("previewDireccion").innerText =
-        document.getElementById("direccion").value;
-
-    // FOTO LOCAL
-
-    const inputFoto =
-        document.getElementById("fotoInput");
-
-    if(inputFoto.files && inputFoto.files[0]){
-
+    if (inputFoto.files && inputFoto.files[0]) {
         const reader = new FileReader();
-
-        reader.onload = function(e){
-
-            document.getElementById("previewFoto").src =
-                e.target.result;
-
-            actualizarHTML();
-        }
-
+        reader.onload = function(e) {
+            const img = document.getElementById("previewFoto");
+            img.crossOrigin = "anonymous";
+            img.src = e.target.result;
+        };
         reader.readAsDataURL(inputFoto.files[0]);
-
-    }else{
-
-        document.getElementById("previewFoto").src =
-            "default-user.jpg";
-
-        actualizarHTML();
+    } else {
+        const img = document.getElementById("previewFoto");
+        img.crossOrigin = "anonymous";
+        img.src = "default-user.jpg";
     }
 }
 
-function actualizarHTML(){
-
-    const firmaHTML =
-        document.getElementById("firma").outerHTML;
-
-    document.getElementById("codigoHTML").value =
-        firmaHTML;
-}
-generarFirma();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
 function descargarImagen() {
-    generarFirma(); // actualiza primero
-    setTimeout(() => { // espera que cargue la foto
+    generarFirma();
+    setTimeout(() => {
         html2canvas(document.getElementById("firma"), {
             scale: 2,
             useCORS: true,
+            allowTaint: false,
             backgroundColor: "#ffffff"
         }).then(canvas => {
             const link = document.createElement("a");
@@ -520,8 +336,11 @@ function descargarImagen() {
             link.href = canvas.toDataURL("image/png");
             link.click();
         });
-    }, 300);
+    }, 500);
 }
+
+generarFirma();
+
 </script>
 </body>
 </html>
