@@ -138,8 +138,8 @@ small{
     content:"";
     position:absolute;
     top:0; left:0; right:0;
-    height:4px;
-    background:#e6007e;
+    height:3px;
+    background:#ccc;
     z-index:1;
 }
 
@@ -148,8 +148,8 @@ small{
     content:"";
     position:absolute;
     bottom:0; left:0; right:0;
-    height:4px;
-    background:#e6007e;
+    height:3px;
+    background:#ccc;
     z-index:1;
 }
 
@@ -219,13 +219,13 @@ small{
 .dato i{
     width:20px;
     height:20px;
-    background:#e6007e;
-    color:white;
+    background:white;
+    color:#e6007e;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:9px;
+    font-size:11px;
     flex-shrink:0;
 }
 
@@ -410,7 +410,7 @@ function generarFirma() {
             datoCelular.style.display = "none";
         }
     document.getElementById("previewEmail").innerText     = document.getElementById("email").value.toLowerCase()+"@kims.com.ar";
-    document.getElementById("previewInterno").innerText = "54-11 4838-1000 Int: " +document.getElementById("interno").value;
+    document.getElementById("previewInterno").innerText = "54-11 4838-1000 Int " +document.getElementById("interno").value;
     document.getElementById("previewDireccion").innerText = document.getElementById("direccion").value;
 
     const inputFoto =
